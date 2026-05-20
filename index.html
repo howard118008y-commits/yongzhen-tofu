@@ -114,6 +114,11 @@
   .reveal-d2{transition-delay:.24s}
   .reveal-d3{transition-delay:.36s}
   .reveal-d4{transition-delay:.48s}
+  .reveal-d5{transition-delay:.60s}
+
+  /* ===== 圖片 blur-up 淡入 ===== */
+  img.img-fade{opacity:0;filter:blur(14px);transform:scale(1.025);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),filter 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
+  img.img-fade.loaded{opacity:1;filter:blur(0);transform:scale(1)}
 
   /* ============ 刊頭 MASTHEAD ============ */
   .masthead{
@@ -238,15 +243,32 @@
   .stage-result p{color:rgba(245,242,234,.7)}
   .stage-result .stage-no{color:var(--gold)}
 
+  /* ============ 章節 ・ 現場直擊 Gallery ============ */
+  .gallery-section{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px) clamp(60px,9vw,140px)}
+  .gallery-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:clamp(20px,3vw,32px);flex-wrap:wrap}
+  .gallery-head .label{display:block}
+  .gallery-head .gcaption{font-family:var(--display);font-style:italic;font-size:clamp(13px,1.4vw,16px);color:var(--ink-soft)}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,14px)}
+  .gtile{position:relative;overflow:hidden;background:var(--paper-deep);aspect-ratio:1/1;border:1px solid var(--ink)}
+  .gtile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+  .gtile:hover img{transform:scale(1.06)}
+  .gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));pointer-events:none}
+  .gtile figcaption{position:absolute;left:clamp(10px,1.4vw,16px);bottom:clamp(8px,1.2vw,14px);color:var(--paper);font-family:var(--label);font-size:10px;letter-spacing:.22em;text-transform:uppercase;z-index:1;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+  .gtile figcaption b{display:block;font-family:var(--serif-tc);font-style:normal;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:none;margin-bottom:2px}
+  @media(max-width:880px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
   /* ============ 章節 02：菜單 ============ */
   .menu-list{border-top:1px solid var(--ink)}
   .menu-row{
-    display:grid;grid-template-columns:auto 1fr auto auto;gap:clamp(14px,2vw,30px);
-    align-items:baseline;padding:clamp(20px,2.6vw,30px) 0;border-bottom:1px solid rgba(26,20,16,.22);
+    display:grid;grid-template-columns:clamp(56px,7vw,84px) auto 1fr auto auto;gap:clamp(14px,2vw,26px);
+    align-items:center;padding:clamp(18px,2.4vw,26px) 0;border-bottom:1px solid rgba(26,20,16,.22);
     position:relative;transition:padding-left .4s cubic-bezier(.16,1,.3,1);
   }
   .menu-row:hover{padding-left:14px}
-  .menu-row .mno{font-family:var(--display);font-style:italic;font-size:14px;color:var(--oxblood);width:34px}
+  .menu-row .mthumb{aspect-ratio:1/1;overflow:hidden;background:var(--paper-deep);border:1px solid rgba(26,20,16,.2);position:relative}
+  .menu-row .mthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+  .menu-row:hover .mthumb img{transform:scale(1.08)}
+  .menu-row .mno{font-family:var(--display);font-style:italic;font-size:14px;color:var(--oxblood);width:30px}
   .menu-row .mname{font-family:var(--serif-tc);font-weight:700;font-size:clamp(21px,2.6vw,32px);line-height:1.15}
   .menu-row .mname .en{display:block;font-family:var(--display);font-style:italic;font-weight:400;font-size:.5em;color:var(--ink-soft);margin-top:4px;letter-spacing:.01em}
   .menu-row .mtag{font-family:var(--label);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--oxblood);white-space:nowrap;align-self:center}
@@ -296,7 +318,7 @@
     .craft-grid{grid-template-columns:1fr;gap:42px}
     .info-grid{grid-template-columns:1fr}
     .cta-actions{grid-template-columns:repeat(2,1fr)}
-    .menu-row{grid-template-columns:auto 1fr auto;gap:12px}
+    .menu-row{grid-template-columns:64px auto 1fr auto;gap:14px}
     .menu-row .mtag{display:none}
   }
   @media(max-width:520px){
@@ -305,7 +327,7 @@
     .hero-meta{flex-direction:column;align-items:flex-start;gap:30px}
     .hero-rate{text-align:left}
     .cta-actions{grid-template-columns:1fr}
-    .menu-row{grid-template-columns:1fr auto;gap:6px 12px}
+    .menu-row{grid-template-columns:54px 1fr auto;gap:10px}
     .menu-row .mno{display:none}
   }
 </style>
@@ -350,7 +372,7 @@
   <!-- ===== HERO 大圖 ===== -->
   <figure class="hero-figure reveal">
     <div class="figure-frame">
-      <img src="永貞豆腐店網路照片/ri1h-listing.jpg" alt="永貞深坑臭豆腐 招牌套餐：臭豆腐、雙蛋蚵仔煎、蚵腸麵線、麻辣鴨血">
+      <img class="img-fade" src="永貞豆腐店網路照片/ri1h-listing.jpg" alt="永貞深坑臭豆腐 招牌套餐：臭豆腐、雙蛋蚵仔煎、蚵腸麵線、麻辣鴨血">
     </div>
     <figcaption class="figcaption"><b>Fig. 01</b> 起鍋前三秒，金黃脆皮在油面上微微鼓起。</figcaption>
   </figure>
@@ -398,6 +420,32 @@
     </div>
   </section>
 
+  <!-- ===== 現場直擊 Gallery Strip ===== -->
+  <section class="gallery-section">
+    <div class="gallery-head reveal">
+      <span class="label">In the Kitchen &nbsp;/&nbsp; 現場直擊</span>
+      <span class="gcaption">Plate Nº 02 — 04　/　永和・永貞路日常</span>
+    </div>
+    <div class="gallery">
+      <figure class="gtile reveal">
+        <img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed.webp" alt="永貞豆腐店店面招牌：正宗深坑臭豆腐 鮮蚵雙蛋 大腸麵線 麻辣鴨血 蚵仔煎">
+        <figcaption><b>店面</b>永貞路 351 號</figcaption>
+      </figure>
+      <figure class="gtile reveal reveal-d1">
+        <img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (5).webp" alt="深坑臭豆腐入油鍋 二段火候慢炸特寫">
+        <figcaption><b>油鍋</b>二段火候現炸</figcaption>
+      </figure>
+      <figure class="gtile reveal reveal-d2">
+        <img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (1).webp" alt="深坑臭豆腐脆皮特寫 配台式泡菜">
+        <figcaption><b>招牌</b>脆皮臭豆腐</figcaption>
+      </figure>
+      <figure class="gtile reveal reveal-d3">
+        <img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/1da9a9e826d15157cea1c5bb8696f248.jpeg" alt="永貞豆腐店招牌套餐俯拍：臭豆腐 雙蛋蚵仔煎 蚵腸麵線 麻辣鴨血">
+        <figcaption><b>滿桌</b>四道招牌一次點</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- ===== 章節 02：菜單 ===== -->
   <section class="chapter" style="padding-top:0">
     <div class="chapter-head reveal">
@@ -410,24 +458,28 @@
 
     <div class="menu-list">
       <div class="menu-row reveal">
+        <div class="mthumb"><img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (7).webp" alt="深坑臭豆腐 碗裝"></div>
         <div class="mno">i.</div>
         <div class="mname">深坑臭豆腐<span class="en">Deep-Keng Stinky Tofu</span></div>
         <div class="mtag">店家招牌</div>
         <div class="mprice"><small>NT$</small>75</div>
       </div>
       <div class="menu-row reveal reveal-d1">
+        <div class="mthumb"><img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (4).webp" alt="雙蛋蚵仔煎 鮮蚵特寫"></div>
         <div class="mno">ii.</div>
         <div class="mname">雙蛋蚵仔煎<span class="en">Oyster Omelette · Double Egg</span></div>
         <div class="mtag">人氣第一</div>
         <div class="mprice"><small>NT$</small>95</div>
       </div>
       <div class="menu-row reveal reveal-d2">
+        <div class="mthumb"><img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (8).webp" alt="蚵腸麵線 外帶碗裝"></div>
         <div class="mno">iii.</div>
         <div class="mname">蚵腸麵線<span class="en">Oyster &amp; Intestine Noodles</span></div>
         <div class="mtag">暖胃首選</div>
         <div class="mprice"><small>NT$</small>70</div>
       </div>
       <div class="menu-row reveal reveal-d3">
+        <div class="mthumb"><img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (6).webp" alt="麻辣鴨血 紅油碗"></div>
         <div class="mno">iv.</div>
         <div class="mname">麻辣鴨血<span class="en">Spicy Duck Blood</span></div>
         <div class="mtag">麻辣必點</div>
@@ -540,6 +592,13 @@
     });
   },{threshold:.4});
   if(fire) fireIO.observe(fire);
+
+  // 圖片 blur-up：載入完成 → 解模糊
+  document.querySelectorAll('img.img-fade').forEach(img=>{
+    if(img.complete && img.naturalWidth>0) img.classList.add('loaded');
+    else img.addEventListener('load', ()=>img.classList.add('loaded'), {once:true});
+    img.addEventListener('error', ()=>img.classList.add('loaded'), {once:true});
+  });
 </script>
 </body>
 </html>
