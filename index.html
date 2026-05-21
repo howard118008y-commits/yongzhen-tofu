@@ -277,6 +277,15 @@
   .menu-note{font-family:var(--display);font-style:italic;font-size:14px;color:var(--ink-soft);margin-top:22px;text-align:right}
 
   /* ============ 章節 03：店家資訊 ============ */
+  .info-visual{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink);border:1px solid var(--ink);margin-bottom:clamp(10px,1.2vw,16px)}
+  .info-photo,.info-map{position:relative;overflow:hidden;background:var(--paper);aspect-ratio:16/10}
+  .info-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.6s cubic-bezier(.16,1,.3,1)}
+  .info-photo:hover img{transform:scale(1.04)}
+  .info-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6));pointer-events:none}
+  .info-photo figcaption{position:absolute;left:clamp(16px,2vw,22px);bottom:clamp(14px,2vw,20px);color:var(--paper);z-index:1;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+  .info-photo figcaption .lab{font-family:var(--label);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;display:block;margin-bottom:4px;color:rgba(245,242,234,.85)}
+  .info-photo figcaption .tit{font-family:var(--serif-tc);font-weight:700;font-size:clamp(18px,2vw,24px);line-height:1.2}
+  .info-map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.05) contrast(1.02)}
   .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}
   .info-cell{background:var(--paper);padding:clamp(26px,3.4vw,44px)}
   .info-cell .label{display:block;margin-bottom:14px}
@@ -316,6 +325,8 @@
   /* ============ RWD ============ */
   @media(max-width:880px){
     .craft-grid{grid-template-columns:1fr;gap:42px}
+    .info-visual{grid-template-columns:1fr}
+    .info-photo,.info-map{aspect-ratio:16/9}
     .info-grid{grid-template-columns:1fr}
     .cta-actions{grid-template-columns:repeat(2,1fr)}
     .menu-row{grid-template-columns:64px auto 1fr auto;gap:14px}
@@ -496,6 +507,24 @@
       <div class="chapter-titles">
         <span class="label">Visit Us &nbsp;/&nbsp; 來店資訊</span>
         <h2>店家資訊</h2>
+      </div>
+    </div>
+
+    <div class="info-visual reveal">
+      <figure class="info-photo">
+        <img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed.webp" alt="永貞豆腐店店面：紅底招牌「正宗深坑臭豆腐 鮮蚵雙蛋 大腸麵線 麻辣鴨血 蚵仔煎」">
+        <figcaption>
+          <span class="lab">Storefront / 店面</span>
+          <span class="tit">永和・永貞路 351 號</span>
+        </figcaption>
+      </figure>
+      <div class="info-map">
+        <iframe
+          src="https://maps.google.com/maps?q=%E6%96%B0%E5%8C%97%E5%B8%82%E6%B0%B8%E5%92%8C%E5%8D%80%E6%B0%B8%E8%B2%9E%E8%B7%AF351%E8%99%9F&hl=zh-TW&z=17&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          title="永貞豆腐店 Google 地圖位置"></iframe>
       </div>
     </div>
 
