@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yongzhen-tofu.com.tw/sitemap.xml

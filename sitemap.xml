@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://yongzhen-tofu.com.tw/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://yongzhen-tofu.com.tw/og-image.webp</image:loc>
+      <image:title>永貞臭豆腐 — 二段火候現炸脆皮特寫</image:title>
+      <image:caption>永和永貞路十年老店招牌深坑臭豆腐</image:caption>
+    </image:image>
+  </url>
+</urlset>
