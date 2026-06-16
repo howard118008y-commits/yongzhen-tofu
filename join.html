@@ -214,7 +214,13 @@
   .apply-inner .label{color:var(--gold)}
   .apply h2{font-family:var(--serif-tc);font-weight:900;font-size:clamp(30px,5vw,72px);line-height:.98;margin:18px 0 clamp(14px,2vw,22px);color:var(--paper)}
   .apply h2 em{font-family:var(--display);font-style:italic;font-weight:500;color:var(--gold)}
-  .apply-sub{font-family:var(--serif-tc);font-weight:300;font-size:clamp(15px,1.5vw,18px);line-height:1.95;color:rgba(245,242,234,.78);max-width:52ch;margin-bottom:clamp(30px,4vw,46px)}
+  .apply-sub{font-family:var(--serif-tc);font-weight:300;font-size:clamp(15px,1.5vw,18px);line-height:1.95;color:rgba(245,242,234,.78);max-width:54ch;margin-bottom:clamp(24px,3vw,34px)}
+  .apply-sub b{color:var(--gold);font-weight:700}
+  .apply-steps{display:flex;flex-wrap:wrap;gap:clamp(14px,2.4vw,30px);margin-bottom:clamp(30px,4vw,46px)}
+  .apply-step{flex:1 1 200px;border-top:2px solid var(--gold);padding-top:14px}
+  .apply-step .sn{font-family:var(--display);font-style:italic;font-size:20px;color:var(--gold)}
+  .apply-step h3{font-family:var(--serif-tc);font-weight:700;font-size:clamp(16px,1.6vw,19px);color:var(--paper);margin:6px 0}
+  .apply-step p{font-family:var(--sans-tc);font-weight:300;font-size:13.5px;line-height:1.8;color:rgba(245,242,234,.72)}
   .form-wrap{background:var(--paper);padding:clamp(10px,1.4vw,16px);border:1px solid rgba(245,242,234,.2)}
   .form-wrap iframe{width:100%;border:0;display:block}
   /* 表單尚未建立時的佔位 */
@@ -403,7 +409,13 @@
     <div class="apply-inner">
       <span class="label reveal">Apply Now &nbsp;/&nbsp; 加盟洽詢</span>
       <h2 class="reveal reveal-d1">留下資料，<br><em>我們主動聯繫你</em>。</h2>
-      <p class="apply-sub reveal reveal-d2">填寫以下加盟意願表，總部專人將盡快與你聯繫，提供完整加盟說明。資料僅用於加盟洽詢用途。</p>
+      <p class="apply-sub reveal reveal-d2">填寫以下加盟意願表，留下聯絡方式即可。我們會在 <b>1–2 個工作天內主動與您聯繫</b>，由林老闆與總部專人提供完整加盟說明——<b>免費諮詢、沒有壓力，了解後再決定</b>。您的資料僅用於加盟洽詢，絕不外流。</p>
+
+      <div class="apply-steps reveal reveal-d2">
+        <div class="apply-step"><span class="sn">01</span><h3>填寫意願表</h3><p>留下姓名與聯絡方式，約 30 秒完成。</p></div>
+        <div class="apply-step"><span class="sn">02</span><h3>我們主動聯繫</h3><p>1–2 個工作天內，林老闆或總部專人與您聯繫。</p></div>
+        <div class="apply-step"><span class="sn">03</span><h3>一對一說明</h3><p>免費諮詢、沒有壓力，談清楚後再決定。</p></div>
+      </div>
 
       <div class="form-wrap reveal reveal-d2">
         <iframe
