@@ -152,12 +152,16 @@
 
   /* 加盟優勢 grid */
   .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}
-  .feat{background:var(--paper);padding:clamp(26px,3vw,40px);text-decoration:none;color:inherit;display:block;position:relative;transition:background .35s ease}
+  .feat{background:var(--paper);padding:0;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background .35s ease}
+  .feat .fthumb{aspect-ratio:16/10;overflow:hidden;background:var(--paper-deep);border-bottom:1px solid var(--ink)}
+  .feat .fthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+  a.feat:hover .fthumb img{transform:scale(1.06)}
+  .feat .fbody{padding:clamp(24px,2.8vw,36px);display:flex;flex-direction:column;flex:1}
   a.feat:hover{background:var(--paper-deep)}
   .feat .fn{font-family:var(--display);font-style:italic;font-size:14px;color:var(--oxblood)}
   .feat h3{font-family:var(--serif-tc);font-weight:700;font-size:clamp(20px,2.2vw,26px);margin:10px 0 12px;line-height:1.25;transition:color .3s ease}
   a.feat:hover h3{color:var(--oxblood)}
-  .feat p{font-family:var(--sans-tc);font-weight:300;font-size:14.5px;line-height:1.9;color:var(--ink-soft)}
+  .feat p{font-family:var(--sans-tc);font-weight:300;font-size:14.5px;line-height:1.9;color:var(--ink-soft);flex:1}
   .feat .more{display:inline-block;margin-top:16px;font-family:var(--label);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--oxblood)}
   .feat .more .ar{transition:transform .35s ease;display:inline-block}
   a.feat:hover .more .ar{transform:translateX(5px)}
@@ -302,12 +306,30 @@
       </div>
     </div>
     <div class="feat-grid reveal">
-      <a class="feat" href="support-technique.html"><div class="fn">i.</div><h3>二段火候技術轉移</h3><p>招牌炸功完整教學，油溫、火候、時間拿捏手把手帶到會，做出一致的外酥內嫩。</p><span class="more">了解更多 <span class="ar">→</span></span></a>
-      <a class="feat" href="support-ingredients.html"><div class="fn">ii.</div><h3>核心原料供應</h3><p>深坑訂製方豆腐與特調醬料由總部統一供應，確保每一家分店口味一致。</p><span class="more">了解更多 <span class="ar">→</span></span></a>
-      <a class="feat" href="support-location.html"><div class="fn">iii.</div><h3>選址與商圈評估</h3><p>協助分析人流與商圈，挑出適合的店點，降低開店風險。</p><span class="more">了解更多 <span class="ar">→</span></span></a>
-      <a class="feat" href="support-training.html"><div class="fn">iv.</div><h3>教育訓練</h3><p>炸功、備料、衛生、收銀與服務一次到位，沒有餐飲經驗也能上手。</p><span class="more">了解更多 <span class="ar">→</span></span></a>
-      <a class="feat" href="support-setup.html"><div class="fn">v.</div><h3>開店與設備輔導</h3><p>裝潢動線、設備清單與採購建議，協助你用合理成本把店開起來。</p><span class="more">了解更多 <span class="ar">→</span></span></a>
-      <a class="feat" href="support-marketing.html"><div class="fn">vi.</div><h3>開幕行銷與持續輔導</h3><p>開幕活動規劃與營運期間的持續支援，讓生意走得長久。</p><span class="more">了解更多 <span class="ar">→</span></span></a>
+      <a class="feat" href="support-technique.html">
+        <div class="fthumb"><img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (5).webp" alt="二段火候現炸油鍋特寫"></div>
+        <div class="fbody"><div class="fn">i.</div><h3>二段火候技術轉移</h3><p>招牌炸功完整教學，油溫、火候、時間拿捏手把手帶到會，做出一致的外酥內嫩。</p><span class="more">了解更多 <span class="ar">→</span></span></div>
+      </a>
+      <a class="feat" href="support-ingredients.html">
+        <div class="fthumb"><img class="img-fade" loading="lazy" src="相簿網圖/pexels-guilherme-pedrosa-2156844062-36371693.webp" alt="方形板豆腐特寫（原料示意）"></div>
+        <div class="fbody"><div class="fn">ii.</div><h3>核心原料供應</h3><p>深坑訂製方豆腐與特調醬料由總部統一供應，確保每一家分店口味一致。</p><span class="more">了解更多 <span class="ar">→</span></span></div>
+      </a>
+      <a class="feat" href="support-location.html">
+        <div class="fthumb"><img class="img-fade" loading="lazy" src="相簿網圖/pexels-jimmy-liao-3615017-32277909.webp" alt="台灣商圈街道人流（選址示意）"></div>
+        <div class="fbody"><div class="fn">iii.</div><h3>選址與商圈評估</h3><p>協助分析人流與商圈，挑出適合的店點，降低開店風險。</p><span class="more">了解更多 <span class="ar">→</span></span></div>
+      </a>
+      <a class="feat" href="support-training.html">
+        <div class="fthumb"><img class="img-fade" loading="lazy" src="相簿網圖/pexels-leongsan-35132136.webp" alt="熱鍋現炸冒煙（教學示意）"></div>
+        <div class="fbody"><div class="fn">iv.</div><h3>教育訓練</h3><p>炸功、備料、衛生、收銀與服務一次到位，沒有餐飲經驗也能上手。</p><span class="more">了解更多 <span class="ar">→</span></span></div>
+      </a>
+      <a class="feat" href="support-setup.html">
+        <div class="fthumb"><img class="img-fade" loading="lazy" src="永貞豆腐店網路照片/unnamed (2).webp" alt="永貞臭豆腐店面攤位"></div>
+        <div class="fbody"><div class="fn">v.</div><h3>開店與設備輔導</h3><p>裝潢動線、設備清單與採購建議，協助你用合理成本把店開起來。</p><span class="more">了解更多 <span class="ar">→</span></span></div>
+      </a>
+      <a class="feat" href="support-marketing.html">
+        <div class="fthumb"><img class="img-fade" loading="lazy" src="相簿網圖/pexels-jimmy-liao-3615017-35398727.webp" alt="夜市人潮（開幕人氣示意）"></div>
+        <div class="fbody"><div class="fn">vi.</div><h3>開幕行銷與持續輔導</h3><p>開幕活動規劃與營運期間的持續支援，讓生意走得長久。</p><span class="more">了解更多 <span class="ar">→</span></span></div>
+      </a>
     </div>
   </section>
 
