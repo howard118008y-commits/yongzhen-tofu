@@ -137,6 +137,15 @@
   img.img-fade{opacity:0;filter:blur(14px);transform:scale(1.025);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),filter 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
   img.img-fade.loaded{opacity:1;filter:blur(0);transform:scale(1)}
 
+  /* Lightbox 放大檢視 */
+  .lb-target{cursor:zoom-in}
+  .lightbox{position:fixed;inset:0;background:rgba(20,16,12,.96);display:none;align-items:center;justify-content:center;z-index:200;padding:clamp(20px,4vw,60px);opacity:0;transition:opacity .35s ease}
+  .lightbox.open{display:flex;opacity:1}
+  .lb-img{max-width:100%;max-height:90vh;object-fit:contain;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lb-close{position:absolute;top:clamp(14px,2vw,24px);right:clamp(16px,2.4vw,28px);background:transparent;border:0;color:var(--paper);font-family:var(--display);font-size:42px;line-height:1;cursor:pointer;width:48px;height:48px;display:flex;align-items:center;justify-content:center;transition:transform .3s ease,opacity .3s ease;opacity:.7}
+  .lb-close:hover{opacity:1;transform:rotate(90deg)}
+  .lb-cap{position:absolute;left:clamp(20px,3vw,36px);bottom:clamp(18px,2.4vw,28px);color:rgba(245,242,234,.7);font-family:var(--label);font-size:11px;letter-spacing:.2em;text-transform:uppercase;max-width:70%;line-height:1.6}
+
   /* 浮動撥電話 */
   .floating-call{position:fixed;right:clamp(16px,2vw,28px);bottom:clamp(16px,2vw,28px);width:60px;height:60px;border-radius:50%;background:var(--oxblood);color:var(--paper);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(90,30,24,.45),0 2px 6px rgba(0,0,0,.18);text-decoration:none;z-index:90;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,background .35s ease;opacity:0;transform:scale(.6) translateY(20px);pointer-events:none}
   .floating-call.show{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
@@ -295,7 +304,7 @@
 
   <figure class="lead-figure reveal">
     <div class="lead-frame">
-      <img class="img-fade" src="永貞豆腐店網路照片/unnamed (1).webp" alt="永貞深坑臭豆腐脆皮特寫：二段火候現炸，外酥內嫩，配台式泡菜">
+      <img class="img-fade lb-target" src="永貞豆腐店網路照片/unnamed (1).webp" alt="永貞深坑臭豆腐脆皮特寫：二段火候現炸，外酥內嫩，配台式泡菜">
     </div>
     <figcaption class="lead-cap">起鍋前三秒，金黃脆皮在油面上微微鼓起。</figcaption>
   </figure>
@@ -476,6 +485,13 @@
     </svg>
   </a>
 
+  <!-- ===== Lightbox ===== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="圖片放大檢視">
+    <button class="lb-close" aria-label="關閉圖片" type="button">×</button>
+    <img class="lb-img" alt="">
+    <div class="lb-cap"></div>
+  </div>
+
   <!-- ===== 版權頁 ===== -->
   <footer>
     <div class="foot-inner">
@@ -526,6 +542,17 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     onScroll();
   }
+
+  // Lightbox：點圖放大
+  (function(){
+    const lb = document.getElementById('lightbox'); if(!lb) return;
+    const lbImg = lb.querySelector('.lb-img'), lbCap = lb.querySelector('.lb-cap');
+    const open = (src, alt)=>{ lbImg.src=src; lbImg.alt=alt||''; lbCap.textContent=alt||''; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
+    const close = ()=>{ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; setTimeout(()=>{ lbImg.src=''; }, 300); };
+    document.querySelectorAll('.lb-target').forEach(img=>{ img.addEventListener('click', e=>{ e.preventDefault(); open(img.currentSrc||img.src, img.alt); }); });
+    lb.addEventListener('click', e=>{ if(e.target===lb || e.target.classList.contains('lb-close')) close(); });
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
+  })();
 </script>
 </body>
 </html>
